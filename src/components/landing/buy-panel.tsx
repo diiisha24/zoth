@@ -51,11 +51,9 @@ export function BuyPanel() {
                 className="group w-full outline-none"
               >
                 <CornerFrame
-                  className={cn(
-                    "px-[7.6px]",
-                    index === 0 ? "h-[78px] py-[9.5px]" : "h-[72px] py-[6.5px]",
-                  )}
-                  tickClassName="h-2 w-[7.6px] border-brand"
+                  inverted
+                  className="h-[75px] p-2"
+                  tickClassName="size-2 border-brand"
                 >
                   <span
                     className={cn(
