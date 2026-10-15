@@ -87,6 +87,24 @@
   }
 }
 
+/* Page container: the Figma content column is 1386px wide, centered in a 1698px frame. */
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: calc(1386px + 2rem);
+  padding-inline: 1rem;
+
+  @media (width >= 48rem) {
+    max-width: calc(1386px + 3rem);
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 64rem) {
+    max-width: calc(1386px + 4rem);
+    padding-inline: 2rem;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
