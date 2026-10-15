@@ -125,12 +125,9 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
         <span className="inline-flex items-center gap-[5px]">
           <span
             aria-hidden="true"
-            className="flex size-[18px] items-center justify-center rounded-full bg-white"
+            className="flex size-4 items-center justify-center rounded-full bg-white"
           >
-            <CircleDollarSign
-              className="size-3.5 text-black"
-              strokeWidth={2.5}
-            />
+            <CircleDollarSign className="size-3 text-black" strokeWidth={2.5} />
           </span>
           DEMO
         </span>
@@ -172,7 +169,8 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
             <dt className="inline-flex items-center gap-3 text-base leading-5 text-[#f2f2f2]">
               <row.icon
                 aria-hidden="true"
-                className={cn("size-[18px] text-white", row.iconClassName)}
+                strokeWidth={1.5}
+                className={cn("size-4 text-white", row.iconClassName)}
               />
               {row.label}
             </dt>
@@ -190,7 +188,7 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
             </dd>
           </div>
           {row.secondary && (
-            <div className="flex items-start justify-between gap-4 pt-1 pb-3 pl-[30px] text-base leading-5 text-[#f2f2f2]">
+            <div className="flex items-start justify-between gap-4 pt-1 pb-3 pl-7 text-base leading-5 text-[#f2f2f2]">
               <dt>{row.secondary.label}</dt>
               <dd>{row.secondary.value}</dd>
             </div>
