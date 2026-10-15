@@ -20,7 +20,7 @@ function PartnerMark({ mark }: { mark: Mark }) {
   const common = {
     "aria-hidden": true,
     viewBox: "0 0 24 24",
-    className: "size-6",
+    className: "size-5 sm:size-6",
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.8,
@@ -97,15 +97,15 @@ export function PartnerStrip() {
             </div>
 
             <div className="relative min-w-0 flex-1 self-center overflow-hidden">
-              <ul className="flex h-16 w-max animate-marquee items-center gap-10 pl-10 hover:[animation-play-state:paused]">
+              <ul className="flex h-16 w-max animate-marquee items-center gap-7 pl-7 hover:[animation-play-state:paused] sm:gap-10 sm:pl-10">
                 {loop.map((mark, index) => (
                   <li
                     key={index}
                     aria-hidden={index >= marks.length}
-                    className="flex h-[56px] w-[143px] items-center justify-center gap-2 text-white/45 transition-colors hover:text-white/80"
+                    className="flex h-[56px] w-[115px] items-center justify-center gap-1.5 sm:w-[143px] sm:gap-2 text-white/45 transition-colors hover:text-white/80"
                   >
                     <PartnerMark mark={mark} />
-                    <span className="font-display text-lg font-semibold tracking-tight">
+                    <span className="font-display text-base font-semibold tracking-tight sm:text-lg">
                       Demo
                     </span>
                   </li>
@@ -113,11 +113,11 @@ export function PartnerStrip() {
               </ul>
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 left-0 w-[101px] bg-gradient-to-r from-[#0c0202] to-transparent"
+                className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r sm:w-[101px] from-[#0c0202] to-transparent"
               />
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 right-0 w-[101px] bg-gradient-to-l from-[#0d0202] to-transparent"
+                className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l sm:w-[101px] from-[#0d0202] to-transparent"
               />
             </div>
 
