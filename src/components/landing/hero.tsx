@@ -14,6 +14,7 @@ import {
   toPercent,
 } from "@/lib/format";
 import { BuyPanel } from "./buy-panel";
+import { CornerFrame } from "./corner-frame";
 import { CountdownCard } from "./countdown-card";
 import { Loadable } from "./loadable";
 
@@ -78,18 +79,15 @@ export function Hero() {
       <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_1px_minmax(0,560px)] lg:gap-8 xl:grid-cols-[minmax(0,1fr)_1px_680px]">
         <div className="flex min-w-0 flex-col gap-10 pt-2">
           <div className="flex flex-col gap-[27px]">
-            <span className="relative flex h-7 w-[207px] items-center justify-center border border-white/10 bg-[#02060b42] text-base tracking-[1.92px] text-brand backdrop-blur-[4.35px]">
-              {/* "[ ]" bracket end caps, as in the design */}
-              <span
-                aria-hidden="true"
-                className="absolute -top-px -bottom-px -left-px w-2 border-y border-l border-brand"
-              />
-              <span
-                aria-hidden="true"
-                className="absolute -top-px -right-px -bottom-px w-2 border-y border-r border-brand"
-              />
-              Lorem ipsum
-            </span>
+            {/* Four separate corner ticks, set just outside the box */}
+            <CornerFrame
+              className="h-[34px] w-[213px] p-[3px]"
+              tickClassName="size-1.5 border-brand"
+            >
+              <span className="flex flex-1 items-center justify-center border border-white/10 bg-[#02060b42] text-base tracking-[1.92px] text-brand backdrop-blur-[4.35px]">
+                Lorem ipsum
+              </span>
+            </CornerFrame>
             <div className="flex flex-col gap-5">
               <h1
                 id="hero-title"
