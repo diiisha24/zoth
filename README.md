@@ -76,7 +76,9 @@ src/
 
 ### Design fidelity
 - **Copy and layout.** Copy follows the Figma placeholders ("Demo", "Lorem ipsum"). Only the `[XX]` slots are filled with live values from the API. Sizes, colors, spacing and the 1386px content column follow the exported measurements.
-- **Recreated assets.** The Figma export referenced PNG/SVG slices that were not supplied. These were rebuilt in code: the perspective grid background (generated SVG), corner-tick frames, bracket badge, glow, and the timer and detail icons (lucide).
+- **Client-supplied assets.** The hero's 3D grid background (`public/brand/hero-grid.svg`) and the logo mark (`public/brand/logo-mark.svg`) are the original Figma exports, used unchanged.
+- **Recreated in code.** Some exported slices were not supplied, so these were rebuilt in code: the corner-tick frames, strip dividers, and the timer, detail and social icons (lucide, Simple Icons and one custom icon). The orange glow uses the export's ellipse. Its blur was tuned to 210px so the rendered brightness matches the Figma screenshot.
+- **Measured colours.** Border colours were measured from Figma screenshots, for example the shared light-orange stroke (#330E02) in the `brand-stroke` token.
 - **Partner logos.** These are neutral "Demo" placeholder marks. Real partner logos need marketing/legal approval before use.
 - **Fonts.** Roobert and SF Pro are commercial fonts, so they are replaced with Inter Tight (display) and Inter (body), both under the Open Font License.
 - **Footer.** The large "DEMO" wordmark at the bottom of the footer was removed at the client's request.
