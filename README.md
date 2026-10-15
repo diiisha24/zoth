@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Token Sale Landing Page
 
-## Getting Started
+A single-page token-sale landing page built from the provided Figma design. It uses Next.js (App Router), TypeScript, Tailwind CSS and shadcn/ui. Live sale data comes from a mock API route through TanStack Query, and the stage countdown updates every second.
 
-First, run the development server:
+**Live demo:** _[add Vercel URL]_
+
+## Tech stack
+
+| Area | Choice |
+| --- | --- |
+| Framework | Next.js 15.5 (App Router), React 19.1 |
+| Language | TypeScript 5 (strict) |
+| Styling | Tailwind CSS 4, design tokens in `src/app/globals.css` |
+| UI primitives | shadcn/ui (new-york style): Button, Progress, Input, Skeleton |
+| Data fetching | TanStack Query 5 |
+| Icons | lucide-react (ISC) |
+
+All dependencies use permissive licenses (MIT, ISC or Apache-2.0).
+
+## Getting started
+
+Requirements: Node.js 20 or later, and npm 10.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build      # production build
+npm run start      # serve the production build
+npm run lint       # ESLint (next/core-web-vitals + TypeScript)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+No environment variables are needed.
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+src/
+  app/
+    api/sale/route.ts       GET  – mock sale snapshot (no-store)
+    api/subscribe/route.ts  POST – mock newsletter signup (validates only)
+    layout.tsx              fonts, metadata, providers
+    page.tsx                page composition
+    providers.tsx           TanStack QueryClientProvider
+    globals.css             theme tokens, container utility, marquee
+  components/
+    ui/                     shadcn/ui primitives
+    landing/                page sections (header, hero, buy panel, countdown,
+                            partner strip, sale details, footer, …)
+  hooks/
+    use-sale.ts             useQuery wrapper with polling and response checks
+    use-countdown.ts        1-second ticker with clock-skew correction
+  lib/
+    sale.ts                 types + deterministic mock data generator
+    format.ts               Intl number/currency helpers
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key decisions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Data flow
+- **The mock API is a pure function of time.** `getSaleSnapshot(now)` derives every value from the current timestamp. Raised amount, tokens sold and participant count all grow through a stage, so the 30-second polling shows the page updating live.
+- **The deadline rolls forward.** Each stage lasts three days, measured from a fixed anchor date. The countdown therefore never reaches zero for good on a long-lived deployment. When it does hit zero, the query is invalidated and the next deadline loads.
+- **Responses are checked at runtime.** `isSaleSnapshot` guards the parsed JSON, so a malformed response shows up as a query error instead of a broken UI. That error state shows a **Retry** button.
+- **Loading states.** Every live value renders a skeleton of matching size until data arrives, which avoids layout shift.
 
-## Deploy on Vercel
+### Countdown
+- **No hydration mismatch.** The timer renders `--` on the server and starts ticking only after mount.
+- **Clock-skew correction.** The API returns `serverTime`, and the client offsets its own clock by the difference. Visitors with a wrong device clock still see the correct remaining time.
+- **No drift.** Ticks are aligned to wall-clock second boundaries.
+- **Screen-reader friendly.** Screen readers get a minute-level summary instead of an announcement every second.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Design fidelity
+- **Copy and layout.** Copy follows the Figma placeholders ("Demo", "Lorem ipsum"). Only the `[XX]` slots are filled with live values from the API. Sizes, colors, spacing and the 1386px content column follow the exported measurements.
+- **Recreated assets.** The Figma export referenced PNG/SVG slices that were not supplied. These were rebuilt in code: the perspective grid background (generated SVG), corner-tick frames, bracket badge, glow, and the timer and detail icons (lucide).
+- **Partner logos.** These are neutral "Demo" placeholder marks. Real partner logos need marketing/legal approval before use.
+- **Fonts.** Roobert and SF Pro are commercial fonts, so they are replaced with Inter Tight (display) and Inter (body), both under the Open Font License.
+- **Footer.** The large "DEMO" wordmark at the bottom of the footer was removed at the client's request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Responsive behavior
+- One column on mobile; the hero becomes two columns at `lg`, and sale details at `xl`.
+- Below `lg`, the nav collapses into a menu button. Below `md`, the milestones switch to a vertical timeline.
+- The page was checked at 390px, 820px and 1698px with no horizontal overflow.
+
+### Accessibility
+- Semantic landmarks and heading order.
+- `aria-pressed` on the option toggles, a `role="timer"` countdown, and real `progressbar` semantics through Radix.
+- Visible focus rings, and Escape closes the mobile menu.
+- The marquee stops when the user prefers reduced motion.
+
+### Security and privacy
+- The newsletter endpoint validates input server-side and **stores nothing**. Connect a real email provider and record consent before launch (GDPR / DPDP).
+- No secrets are used; the `X-Powered-By` header is turned off.
+
+## Known limitations and next steps
+- The purchase options are UI-only. Wallet or card checkout integration is out of scope.
+- Footer and document links are placeholders (`#`).
+- Real copy, partner logos and legal disclaimer text are needed from the client.
+- Possible additions: unit tests for `getSaleSnapshot` and `getCountdownParts`, and Playwright visual regression tests.
+
+## Deployment
+
+The project is ready to deploy on Vercel with zero configuration: import the repository and keep the default Next.js settings.
