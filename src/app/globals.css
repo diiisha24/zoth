@@ -1,26 +1,118 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+/*
+ * Design tokens taken from the Figma export.
+ * The page is a dark-only design, so there is no light theme.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0px;
+
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0b0303;
+  --card-foreground: #ffffff;
+  --popover: #0b0303;
+  --popover-foreground: #ffffff;
+  --primary: #ff4509;
+  --primary-foreground: #ffffff;
+  --secondary: #23110b;
+  --secondary-foreground: #ffffff;
+  --muted: #340e0e;
+  --muted-foreground: rgb(255 255 255 / 0.6);
+  --accent: #23110b;
+  --accent-foreground: #ffffff;
+  --destructive: #ff5a4f;
+  --border: #340e0e;
+  --input: #150a05;
+  --ring: #ff4509;
+
+  /* Brand-specific tokens */
+  --brand: #ff4509;
+  --brand-deep: #541400;
+  --brand-line: #531400;
+  --brand-track: #340e0e;
+  --brand-cream: #f7f1ec;
+  --brand-sand: #bdb1a9;
+  --strip-line: #531a1a;
+  --strip-mark: #833c3c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-line: var(--brand-line);
+  --color-brand-track: var(--brand-track);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-sand: var(--brand-sand);
+  --color-strip-line: var(--strip-line);
+  --color-strip-mark: var(--strip-mark);
+
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-inter-tight);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  ::selection {
+    background: var(--brand);
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
 }
