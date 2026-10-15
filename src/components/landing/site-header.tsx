@@ -5,14 +5,14 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { BracketFrame } from "./bracket-frame";
+import { CornerFrame } from "./corner-frame";
 import { Logo } from "./logo";
 
 const navigation = [
-  { label: "Sale", href: "#sale" },
-  { label: "Buy", href: "#buy" },
-  { label: "Roadmap", href: "#roadmap" },
-  { label: "Docs", href: "#docs" },
+  { label: "Demo", href: "#sale" },
+  { label: "Demo", href: "#buy" },
+  { label: "Demo", href: "#roadmap" },
+  { label: "Demo", href: "#docs" },
 ];
 
 export function SiteHeader() {
@@ -35,31 +35,28 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">
-          <BracketFrame
-            className="h-[46px]"
-            capClassName="w-[5px] border-[#6b2a12]"
-          >
-            <ul className="my-[3px] flex items-center gap-[60px] bg-secondary px-[30px]">
-              {navigation.map((item) => (
-                <li key={item.href}>
+          <CornerFrame className="h-[46px] w-[474px] px-[2.5px] py-[3px]">
+            <ul className="flex flex-1 items-center justify-center gap-[60px] bg-secondary">
+              {navigation.map((item, index) => (
+                <li key={`${item.href}-${index}`}>
                   <a
                     href={item.href}
-                    className="font-display text-sm leading-[17.5px] tracking-[-0.28px] text-white opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:underline"
+                    className="font-display text-sm leading-[17.5px] tracking-[-0.28px] text-white opacity-70 transition-opacity hover:opacity-100 focus-visible:underline focus-visible:opacity-100 focus-visible:outline-none"
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </BracketFrame>
+          </CornerFrame>
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Button asChild variant="outline" className="min-w-[181px]">
-            <a href="#docs">Read whitepaper</a>
+          <Button asChild variant="outline" className="w-[181px]">
+            <a href="#docs">Lorem ipsum</a>
           </Button>
-          <Button asChild className="min-w-[164px]">
-            <a href="#buy">Buy DEMO</a>
+          <Button asChild className="w-[164px]">
+            <a href="#buy">Lorem ipsum</a>
           </Button>
         </div>
 
@@ -83,8 +80,8 @@ export function SiteHeader() {
         >
           <nav aria-label="Mobile" className="container-page py-4">
             <ul className="flex flex-col">
-              {navigation.map((item) => (
-                <li key={item.href}>
+              {navigation.map((item, index) => (
+                <li key={`${item.href}-${index}`}>
                   <a
                     href={item.href}
                     onClick={() => setOpen(false)}
@@ -98,12 +95,12 @@ export function SiteHeader() {
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <Button asChild variant="outline">
                 <a href="#docs" onClick={() => setOpen(false)}>
-                  Read whitepaper
+                  Lorem ipsum
                 </a>
               </Button>
               <Button asChild>
                 <a href="#buy" onClick={() => setOpen(false)}>
-                  Buy DEMO
+                  Lorem ipsum
                 </a>
               </Button>
             </div>

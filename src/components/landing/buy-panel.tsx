@@ -3,27 +3,17 @@
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { formatPrice, formatUsd } from "@/lib/format";
-import type { SaleSnapshot } from "@/lib/sale";
-import { BracketFrame } from "./bracket-frame";
-import { Loadable } from "./loadable";
+import { CornerFrame } from "./corner-frame";
 
-type PaymentMethod = "crypto" | "card";
+type Option = "first" | "second";
 
-const methods: Array<{ id: PaymentMethod; label: string }> = [
-  { id: "crypto", label: "Pay with crypto" },
-  { id: "card", label: "Pay with card" },
+const options: Array<{ id: Option; label: string }> = [
+  { id: "first", label: "Lorem ipsum" },
+  { id: "second", label: "Lorem ipsum" },
 ];
 
-export function BuyPanel({ sale }: { sale?: SaleSnapshot }) {
-  const [method, setMethod] = useState<PaymentMethod>("crypto");
-
-  const minimum = sale ? formatUsd(sale.purchase.minUsd) : undefined;
-  const note = !sale
-    ? undefined
-    : method === "crypto"
-      ? `Connect a wallet to pay with ETH or USDT. Minimum purchase ${minimum}.`
-      : `Pay by debit or credit card. Minimum purchase ${minimum}.`;
+export function BuyPanel() {
+  const [selected, setSelected] = useState<Option>("first");
 
   return (
     <section
@@ -35,56 +25,56 @@ export function BuyPanel({ sale }: { sale?: SaleSnapshot }) {
         <div className="flex flex-col gap-2">
           <h2
             id="buy-title"
-            className="text-base font-medium tracking-[0.2px] text-white uppercase"
+            className="text-base font-medium tracking-[0.2px] text-white"
           >
-            Buy {sale?.token.symbol ?? "DEMO"}
+            LOREM IPSUM
           </h2>
           <p className="text-base tracking-[0.2px] text-white/80 sm:text-lg">
-            {sale?.currentStage.name ?? "Current stage"} price:{" "}
-            <Loadable
-              value={sale ? formatPrice(sale.currentStage.priceUsd) : undefined}
-            />{" "}
-            per token
+            Lorem ipsum dolor sit amet consectetur adipiscing
           </p>
         </div>
 
-        <fieldset className="flex flex-col gap-4 pt-4">
-          <legend className="sr-only">Payment method</legend>
-          {methods.map((option) => {
-            const selected = method === option.id;
+        <div
+          role="group"
+          aria-label="Options"
+          className="flex flex-col gap-4 pt-4"
+        >
+          {options.map((option, index) => {
+            const isSelected = selected === option.id;
             return (
               <button
                 key={option.id}
                 type="button"
-                aria-pressed={selected}
-                onClick={() => setMethod(option.id)}
-                className="group w-full text-left outline-none"
+                aria-pressed={isSelected}
+                aria-label={`${option.label} ${index + 1}`}
+                onClick={() => setSelected(option.id)}
+                className="group w-full outline-none"
               >
-                <BracketFrame
-                  className="h-[78px]"
-                  capClassName={cn(!selected && "border-brand/60")}
+                <CornerFrame
+                  className={cn(
+                    "px-[7.6px]",
+                    index === 0 ? "h-[78px] py-[9.5px]" : "h-[72px] py-[6.5px]",
+                  )}
+                  tickClassName="h-2 w-[7.6px] border-brand"
                 >
                   <span
                     className={cn(
-                      "my-[9.5px] flex flex-1 items-center justify-center px-6 py-2 font-display text-[17.4px] leading-[30.4px] font-medium tracking-[-0.22px] text-white transition-colors group-focus-visible:ring-2 group-focus-visible:ring-white",
-                      selected
+                      "flex flex-1 items-center justify-center px-6 py-2 font-display text-[17.4px] leading-[30.4px] font-medium tracking-[-0.22px] text-white transition-colors group-focus-visible:ring-2 group-focus-visible:ring-white",
+                      isSelected
                         ? "bg-brand group-hover:bg-[#ff5d2b]"
                         : "border border-brand group-hover:bg-brand/10",
                     )}
                   >
                     {option.label}
                   </span>
-                </BracketFrame>
+                </CornerFrame>
               </button>
             );
           })}
-        </fieldset>
+        </div>
 
-        <p
-          aria-live="polite"
-          className="text-center text-sm tracking-[0.2px] text-white/80"
-        >
-          <Loadable value={note} className="w-64" />
+        <p className="text-center text-sm tracking-[0.2px] text-white/80">
+          Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
         </p>
       </div>
     </section>

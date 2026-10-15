@@ -50,10 +50,13 @@ export function useCountdown(
 
     // Line up with the start of the next wall-clock second so the
     // display does not drift between neighbouring ticks.
-    const timeoutId = window.setTimeout(() => {
-      tick();
-      intervalId = window.setInterval(tick, SECOND);
-    }, SECOND - (Date.now() % SECOND));
+    const timeoutId = window.setTimeout(
+      () => {
+        tick();
+        intervalId = window.setInterval(tick, SECOND);
+      },
+      SECOND - (Date.now() % SECOND),
+    );
 
     return () => {
       window.clearTimeout(timeoutId);

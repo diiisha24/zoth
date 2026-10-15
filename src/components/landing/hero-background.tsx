@@ -11,8 +11,14 @@ const DEPTHS = [0.3, 0.4, 0.53, 0.7, 0.92, 1.2, 1.6];
 const edgePoints: Array<[number, number]> = [
   ...Array.from({ length: 17 }, (_, i): [number, number] => [(W / 16) * i, 0]),
   ...Array.from({ length: 17 }, (_, i): [number, number] => [(W / 16) * i, H]),
-  ...Array.from({ length: 9 }, (_, i): [number, number] => [0, (H / 10) * (i + 1)]),
-  ...Array.from({ length: 9 }, (_, i): [number, number] => [W, (H / 10) * (i + 1)]),
+  ...Array.from({ length: 9 }, (_, i): [number, number] => [
+    0,
+    (H / 10) * (i + 1),
+  ]),
+  ...Array.from({ length: 9 }, (_, i): [number, number] => [
+    W,
+    (H / 10) * (i + 1),
+  ]),
 ];
 
 const radialLines = edgePoints.map(([x, y]) => ({
@@ -52,8 +58,8 @@ export function HeroBackground() {
         </defs>
         <g
           mask="url(#grid-mask)"
-          stroke="#ff4509"
-          strokeOpacity="0.13"
+          stroke="#ffffff"
+          strokeOpacity="0.09"
           fill="none"
         >
           {radialLines.map((line, i) => (

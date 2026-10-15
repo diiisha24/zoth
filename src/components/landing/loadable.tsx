@@ -14,5 +14,6 @@ export function Loadable({
       <Skeleton className={cn("h-[0.85em] w-16 align-middle", className)} />
     );
   }
-  return <>{value}</>;
+  // Wrapped so neighbouring values stay separate flex items.
+  return <span>{value}</span>;
 }
