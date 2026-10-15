@@ -24,7 +24,7 @@ function ComparisonCard() {
     <section
       id="docs"
       aria-labelledby="docs-title"
-      className="flex min-h-[225px] w-full scroll-mt-6 flex-col justify-between border border-brand bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
+      className="flex min-h-[225px] w-full scroll-mt-6 flex-col justify-between border border-brand/20 bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
     >
       <h3
         id="docs-title"
@@ -144,7 +144,7 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
         >
           <div className="flex min-h-9 items-center justify-between gap-4 py-3">
             <dt className="inline-flex items-center gap-3 text-base leading-5 text-[#f2f2f2]">
-              <row.icon aria-hidden="true" className="size-4 text-brand" />
+              <row.icon aria-hidden="true" className="size-4 text-white" />
               {row.label}
             </dt>
             <dd className="text-base text-[#f2f2f2] tabular-nums">
