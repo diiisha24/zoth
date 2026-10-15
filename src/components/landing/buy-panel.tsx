@@ -50,8 +50,9 @@ export function BuyPanel() {
                 onClick={() => setSelected(option.id)}
                 className="group w-full outline-none"
               >
+                {/* Per the design, only the top option has inverted ticks. */}
                 <CornerFrame
-                  inverted
+                  inverted={index === 0}
                   className="h-[75px] p-2"
                   tickClassName="size-2 border-brand"
                 >
