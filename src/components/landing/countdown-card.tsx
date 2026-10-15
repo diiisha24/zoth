@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { Hourglass } from "lucide-react";
+import { AlarmClock } from "lucide-react";
 
 import { saleQueryKey } from "@/hooks/use-sale";
 import { useCountdown } from "@/hooks/use-countdown";
@@ -59,7 +59,7 @@ export function CountdownCard({
     <div className="flex flex-col gap-4 border border-brand-track bg-black px-3.5 py-5 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex flex-col gap-1.5">
         <div className="flex items-start gap-1.5">
-          <Hourglass aria-hidden="true" className="size-6 text-brand" />
+          <AlarmClock aria-hidden="true" className="size-5 text-white" />
           <h3 className="font-display text-lg leading-[23.4px] font-medium text-white">
             Lorem ipsum dolor
           </h3>

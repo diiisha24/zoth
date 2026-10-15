@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  CircleDot,
   Coins,
   FileText,
   Lock,
@@ -24,7 +25,7 @@ function ComparisonCard() {
     <section
       id="docs"
       aria-labelledby="docs-title"
-      className="flex min-h-[225px] w-full scroll-mt-6 flex-col justify-between border border-brand/20 bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
+      className="flex min-h-[225px] w-full scroll-mt-6 flex-col justify-between border border-[#330e02] bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
     >
       <h3
         id="docs-title"
@@ -87,6 +88,11 @@ function Milestones({ sale }: { sale?: SaleSnapshot }) {
               aria-hidden="true"
               className="absolute top-5 bottom-0 left-2 w-0.5 bg-[#ffe9dc1f] md:top-2 md:right-0 md:bottom-auto md:left-3.5 md:h-0.5 md:w-auto"
             />
+            {/* 20px tag row (design grid: 20px / 23.4px / 21.7px). Only the
+                active milestone shows a tag; the rest keep the row so titles align. */}
+            <span className="h-5 text-xs leading-5 text-brand">
+              {active ? "Demo" : null}
+            </span>
             <strong className="font-display text-lg leading-[23.4px] font-medium text-brand-cream">
               {title}
             </strong>
@@ -116,7 +122,7 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
       label: "Lorem ipsum",
       value: (
         <span className="inline-flex items-center gap-[5px]">
-          <span aria-hidden="true" className="size-3 rounded-full bg-brand" />
+          <CircleDot aria-hidden="true" className="size-3.5 text-white" />
           DEMO
         </span>
       ),
