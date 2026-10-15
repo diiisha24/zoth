@@ -1,13 +1,18 @@
-import { Globe, Mail, MessageCircle, Rss, Send } from "lucide-react";
-
 import { NewsletterForm } from "./newsletter-form";
+import {
+  DiscordIcon,
+  LinkedInIcon,
+  MediumIcon,
+  XIcon,
+  YouTubeIcon,
+} from "./social-icons";
 
 const socials = [
-  { label: "Demo channel", icon: Send },
-  { label: "Demo chat", icon: MessageCircle },
-  { label: "Demo website", icon: Globe },
-  { label: "Demo feed", icon: Rss },
-  { label: "Demo email", icon: Mail },
+  { label: "X", icon: XIcon },
+  { label: "YouTube", icon: YouTubeIcon },
+  { label: "Discord", icon: DiscordIcon },
+  { label: "LinkedIn", icon: LinkedInIcon },
+  { label: "Medium", icon: MediumIcon },
 ];
 
 const columns = [
@@ -33,7 +38,7 @@ export function SiteFooter() {
                       aria-label={label}
                       className="block text-white/70 transition-colors hover:text-brand focus-visible:text-brand focus-visible:outline-none"
                     >
-                      <Icon aria-hidden="true" className="size-4" />
+                      <Icon className="size-4" />
                     </a>
                   </li>
                 ))}
@@ -78,17 +83,9 @@ export function SiteFooter() {
             ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
             tempor incididunt ut labore et dolore magna
           </p>
-          <div className="flex flex-wrap items-center gap-3 text-[13.7px] text-[#a8a8aa]">
-            <a href="#" className="hover:text-white">
-              Lorem ipsum
-            </a>
-            <span aria-hidden="true" className="text-white/30">
-              ·
-            </span>
-            <a href="#" className="hover:text-white">
-              Lorem ipsum
-            </a>
-          </div>
+          <span className="text-sm leading-[18px] text-[#a8a8aa]">
+            Lorem ipsum
+          </span>
         </div>
       </div>
     </footer>
