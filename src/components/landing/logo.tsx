@@ -1,27 +1,30 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
+// Client-supplied logo mark (public/brand/logo-mark.svg, 21×19), shown
+// unchanged inside a white 31px disc, followed by the wordmark.
 export function Logo({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 font-display text-[22px] font-semibold tracking-[-0.5px] text-white",
+        "inline-flex items-center gap-2 font-display text-[24px] font-semibold tracking-[-0.5px] text-white",
         className,
       )}
     >
-      <svg
+      <span
         aria-hidden="true"
-        viewBox="0 0 28 28"
-        className="size-7"
-        fill="none"
+        className="flex size-[31px] shrink-0 items-center justify-center rounded-full bg-white"
       >
-        <circle cx="14" cy="14" r="13" fill="#fff" />
-        <path
-          d="M9 9l10 10M19 9L9 19"
-          stroke="#000"
-          strokeWidth="2.6"
-          strokeLinecap="square"
+        <Image
+          src="/brand/logo-mark.svg"
+          alt=""
+          width={21}
+          height={19}
+          unoptimized
+          priority
         />
-      </svg>
+      </span>
       Demo
     </span>
   );
