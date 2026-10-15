@@ -8,7 +8,7 @@ A single-page token-sale landing page built from the provided Figma design. It u
 
 | Area | Choice |
 | --- | --- |
-| Framework | Next.js 15.5 (App Router), React 19.1 |
+| Framework | Next.js 15.5.28 (App Router), React 19.1.10 |
 | Language | TypeScript 5 (strict) |
 | Styling | Tailwind CSS 4, design tokens in `src/app/globals.css` |
 | UI primitives | shadcn/ui (new-york style): Button, Progress, Input, Skeleton |
@@ -94,6 +94,8 @@ src/
 ### Security and privacy
 - The newsletter endpoint validates input server-side and **stores nothing**. Connect a real email provider and record consent before launch (GDPR / DPDP).
 - No secrets are used; the `X-Powered-By` header is turned off.
+- Dependencies are pinned to patched releases: Next.js 15.5.28 (fixes CVE-2025-66478 and later advisories), React 19.1.10 and sharp 0.35.5.
+- One audit finding remains: a `postcss` copy bundled inside Next.js. It runs only at build time on our own CSS, and fixing it needs a breaking Next.js upgrade, so it is accepted for now. Review it when moving to Next.js 16.
 
 ## Known limitations and next steps
 - The purchase options are UI-only. Wallet or card checkout integration is out of scope.
