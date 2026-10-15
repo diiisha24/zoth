@@ -84,7 +84,7 @@ export function Hero() {
               className="h-7 w-[207px]"
               tickClassName="z-10 size-[7px] border-brand"
             >
-              <span className="flex flex-1 items-center justify-center border border-brand-stroke bg-[#02060b42] text-base tracking-[1.92px] text-brand backdrop-blur-[4.35px]">
+              <span className="flex flex-1 items-center justify-center border border-strip-line bg-[#02060b] text-base tracking-[1.92px] text-brand backdrop-blur-[4.35px]">
                 Lorem ipsum
               </span>
             </CornerFrame>
