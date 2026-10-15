@@ -2,7 +2,8 @@
 
 A single-page token-sale landing page built from the provided Figma design. It uses Next.js (App Router), TypeScript, Tailwind CSS and shadcn/ui. Live sale data comes from a mock API route through TanStack Query, and the stage countdown updates every second.
 
-**Live demo:** _[add Vercel URL]_
+**Live demo:** https://zoth-seven.vercel.app/
+**Repository:** https://github.com/diiisha24/zoth
 
 ## Tech stack
 
