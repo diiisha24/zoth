@@ -61,7 +61,7 @@ export function BuyPanel() {
                       "flex flex-1 items-center justify-center px-6 py-2 font-display text-[17.4px] leading-[30.4px] font-medium tracking-[-0.22px] text-white transition-colors group-focus-visible:ring-2 group-focus-visible:ring-white",
                       isSelected
                         ? "bg-brand group-hover:bg-[#ff5d2b]"
-                        : "border border-brand/70 group-hover:bg-brand/10",
+                        : "border border-brand group-hover:bg-brand/10",
                     )}
                   >
                     {option.label}

@@ -32,6 +32,7 @@
   --brand-deep: #541400;
   --brand-line: #531400;
   --brand-track: #340e0e;
+  --brand-stroke: #330e02;
   --brand-cream: #f7f1ec;
   --brand-sand: #bdb1a9;
   --strip-line: #531a1a;
@@ -62,6 +63,7 @@
   --color-brand-deep: var(--brand-deep);
   --color-brand-line: var(--brand-line);
   --color-brand-track: var(--brand-track);
+  --color-brand-stroke: var(--brand-stroke);
   --color-brand-cream: var(--brand-cream);
   --color-brand-sand: var(--brand-sand);
   --color-strip-line: var(--strip-line);

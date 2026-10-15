@@ -24,7 +24,7 @@ function ComparisonCard() {
     <section
       id="docs"
       aria-labelledby="docs-title"
-      className="flex min-h-[225px] w-full scroll-mt-6 flex-col justify-between border border-[#330e02] bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
+      className="flex min-h-[225px] w-full scroll-mt-6 flex-col justify-between border border-brand-stroke bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
     >
       <h3
         id="docs-title"
@@ -153,8 +153,8 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
           className={cn(
             index > 0 &&
               (index === rows.length - 1
-                ? "border-t-2 border-white/15"
-                : "border-t border-white/10"),
+                ? "border-t-2 border-stone-800"
+                : "border-t border-stone-800"),
           )}
         >
           <div
@@ -164,7 +164,7 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
             )}
           >
             <dt className="inline-flex items-center gap-3 text-base leading-5 text-[#f2f2f2]">
-              <row.icon strokeWidth={1.5} className="size-4 text-white" />
+              <row.icon strokeWidth={1.5} className="size-4 text-[#f2f2f2]" />
               {row.label}
             </dt>
             <dd className="text-base text-[#f2f2f2] tabular-nums">

@@ -33,7 +33,7 @@ function StatCard({
   right?: string;
 }) {
   return (
-    <article className="flex flex-1 flex-col gap-4 border border-brand bg-black/40 p-2.5">
+    <article className="flex flex-1 flex-col gap-4 border border-brand-stroke bg-black/40 p-2.5">
       <div className="flex items-center justify-between gap-2 border-b border-brand-line pb-2">
         <h3 className="font-display text-xs font-medium text-white">
           <Loadable value={title} className="w-12" />
@@ -79,10 +79,10 @@ export function Hero() {
       <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_1px_minmax(0,560px)] lg:gap-8 xl:grid-cols-[minmax(0,1fr)_1px_680px]">
         <div className="flex min-w-0 flex-col gap-10 pt-2">
           <div className="flex flex-col gap-[27px]">
-            {/* Four separate corner ticks, set just outside the box */}
+            {/* Corner ticks sit on the box corners, over its faint border */}
             <CornerFrame
-              className="h-[34px] w-[213px] p-[3px]"
-              tickClassName="size-1.5 border-brand"
+              className="h-7 w-[207px]"
+              tickClassName="z-10 size-[7px] border-brand"
             >
               <span className="flex flex-1 items-center justify-center border border-white/10 bg-[#02060b42] text-base tracking-[1.92px] text-brand backdrop-blur-[4.35px]">
                 Lorem ipsum
