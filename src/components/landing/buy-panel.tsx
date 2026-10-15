@@ -19,7 +19,7 @@ export function BuyPanel() {
     <section
       id="buy"
       aria-labelledby="buy-title"
-      className="scroll-mt-6 border border-brand bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
+      className="scroll-mt-6 border border-brand/40 bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),linear-gradient(0deg,#350f0f,#350f0f)] p-4 shadow-[0_0_122.6px_-50px_#ff45091c] sm:p-[22px]"
     >
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
@@ -61,7 +61,7 @@ export function BuyPanel() {
                       "flex flex-1 items-center justify-center px-6 py-2 font-display text-[17.4px] leading-[30.4px] font-medium tracking-[-0.22px] text-white transition-colors group-focus-visible:ring-2 group-focus-visible:ring-white",
                       isSelected
                         ? "bg-brand group-hover:bg-[#ff5d2b]"
-                        : "border border-brand group-hover:bg-brand/10",
+                        : "border border-brand/70 group-hover:bg-brand/10",
                     )}
                   >
                     {option.label}

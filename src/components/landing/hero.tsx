@@ -210,7 +210,7 @@ export function Hero() {
 
         <div
           aria-hidden="true"
-          className="hidden w-px bg-gradient-to-b from-brand-line via-brand-line/60 to-transparent lg:block"
+          className="hidden w-px bg-brand-deep lg:block"
         />
 
         <div className="pt-2 lg:sticky lg:top-6 lg:self-start">
