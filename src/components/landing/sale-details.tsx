@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  CircleDot,
-  Coins,
-  FileText,
-  Lock,
-  Network,
-  Tag,
+  Blocks,
+  CalendarClock,
+  CircleDollarSign,
+  Copy,
+  HandCoins,
+  Target,
   type LucideIcon,
 } from "lucide-react";
 
@@ -108,6 +108,7 @@ function Milestones({ sale }: { sale?: SaleSnapshot }) {
 
 interface DetailRow {
   icon: LucideIcon;
+  iconClassName?: string;
   label: string;
   value?: React.ReactNode;
   secondary?: { label: string; value: string };
@@ -116,29 +117,38 @@ interface DetailRow {
 
 function DetailList({ sale }: { sale?: SaleSnapshot }) {
   const rows: DetailRow[] = [
-    { icon: Coins, label: "Demo", value: "DEMO" },
+    { icon: Blocks, label: "Demo", value: "DEMO" },
     {
-      icon: Network,
+      icon: HandCoins,
       label: "Lorem ipsum",
       value: (
         <span className="inline-flex items-center gap-[5px]">
-          <CircleDot aria-hidden="true" className="size-3.5 text-white" />
+          <span
+            aria-hidden="true"
+            className="flex size-[18px] items-center justify-center rounded-full bg-white"
+          >
+            <CircleDollarSign
+              className="size-3.5 text-black"
+              strokeWidth={2.5}
+            />
+          </span>
           DEMO
         </span>
       ),
     },
     {
-      icon: Tag,
+      icon: Copy,
+      iconClassName: "-scale-y-100",
       label: "Lorem ipsum",
       value: sale ? formatPrice(sale.currentStage.priceUsd) : undefined,
     },
     {
-      icon: Lock,
+      icon: Target,
       label: "Demo",
       value: sale ? `${sale.purchase.tgeUnlockPct}%` : undefined,
       secondary: { label: "Demo", value: "Lorem ipsum" },
     },
-    { icon: FileText, label: "Lorem ipsum", value: "Demo", action: true },
+    { icon: CalendarClock, label: "Lorem ipsum", value: "Demo", action: true },
   ];
 
   return (
@@ -146,11 +156,24 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
       {rows.map((row, index) => (
         <div
           key={index}
-          className={cn(index > 0 && "border-t border-stone-800")}
+          className={cn(
+            index > 0 &&
+              (index === rows.length - 1
+                ? "border-t-2 border-white/15"
+                : "border-t border-white/10"),
+          )}
         >
-          <div className="flex min-h-9 items-center justify-between gap-4 py-3">
+          <div
+            className={cn(
+              "flex items-center justify-between gap-4",
+              index === rows.length - 1 ? "py-3" : "py-[8.5px]",
+            )}
+          >
             <dt className="inline-flex items-center gap-3 text-base leading-5 text-[#f2f2f2]">
-              <row.icon aria-hidden="true" className="size-4 text-white" />
+              <row.icon
+                aria-hidden="true"
+                className={cn("size-[18px] text-white", row.iconClassName)}
+              />
               {row.label}
             </dt>
             <dd className="text-base text-[#f2f2f2] tabular-nums">
@@ -167,7 +190,7 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
             </dd>
           </div>
           {row.secondary && (
-            <div className="flex items-start justify-between gap-4 pb-3 pl-7 text-base text-[#f2f2f2]">
+            <div className="flex items-start justify-between gap-4 pt-1 pb-3 pl-[30px] text-base leading-5 text-[#f2f2f2]">
               <dt>{row.secondary.label}</dt>
               <dd>{row.secondary.value}</dd>
             </div>
