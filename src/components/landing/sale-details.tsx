@@ -4,10 +4,8 @@ import {
   Blocks,
   CalendarClock,
   CircleDollarSign,
-  Copy,
   HandCoins,
   Target,
-  type LucideIcon,
 } from "lucide-react";
 
 import { useSale } from "@/hooks/use-sale";
@@ -15,6 +13,7 @@ import { formatPrice } from "@/lib/format";
 import type { SaleSnapshot } from "@/lib/sale";
 import { cn } from "@/lib/utils";
 import { Loadable } from "./loadable";
+import { StackedSquaresIcon } from "./stacked-squares-icon";
 
 const comparisonRows = ["Lorem ipsum", "Lorem ipsum", "Lorem ipsum"];
 
@@ -107,8 +106,7 @@ function Milestones({ sale }: { sale?: SaleSnapshot }) {
 }
 
 interface DetailRow {
-  icon: LucideIcon;
-  iconClassName?: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   label: string;
   value?: React.ReactNode;
   secondary?: { label: string; value: string };
@@ -134,8 +132,7 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
       ),
     },
     {
-      icon: Copy,
-      iconClassName: "-scale-y-100",
+      icon: StackedSquaresIcon,
       label: "Lorem ipsum",
       value: sale ? formatPrice(sale.currentStage.priceUsd) : undefined,
     },
@@ -167,11 +164,7 @@ function DetailList({ sale }: { sale?: SaleSnapshot }) {
             )}
           >
             <dt className="inline-flex items-center gap-3 text-base leading-5 text-[#f2f2f2]">
-              <row.icon
-                aria-hidden="true"
-                strokeWidth={1.5}
-                className={cn("size-4 text-white", row.iconClassName)}
-              />
+              <row.icon strokeWidth={1.5} className="size-4 text-white" />
               {row.label}
             </dt>
             <dd className="text-base text-[#f2f2f2] tabular-nums">
