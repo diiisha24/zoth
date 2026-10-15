@@ -119,6 +119,12 @@
     @apply bg-background font-sans text-foreground antialiased;
   }
 
+  /* Tailwind v4 preflight resets buttons to the default cursor. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
   ::selection {
     background: var(--brand);
     color: #fff;
